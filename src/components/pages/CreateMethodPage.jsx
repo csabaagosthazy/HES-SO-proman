@@ -3,6 +3,8 @@ import React from "react";
 import AccordionItem from "../accordion/AccordionItem";
 import { Card, Accordion, Form, Button, InputGroup, FormControl } from "react-bootstrap";
 
+import { postData } from "../../services/api";
+
 const items2 = [
   { title: "Ideation", key: "aProject", value: false },
   { title: "Realize project", key: "rProject", value: false },
@@ -57,7 +59,7 @@ const CreateMethodPage = () => {
 
   const saveMethod = () => {
     console.log("save method");
-    console.log(state);
+    postData(state);
   };
 
   return (
@@ -155,7 +157,7 @@ const CreateMethodPage = () => {
               <AccordionItem header={"Suitable for conflict resolution"}>
                 <Form style={{ textAlign: "left" }}>
                   <Form.Group controlId={"suitable"}>
-                    {items2.slice(-1).map((item) => (
+                    {items2.slice(21, 22).map((item) => (
                       <Form.Check
                         type="checkbox"
                         key={item.key}

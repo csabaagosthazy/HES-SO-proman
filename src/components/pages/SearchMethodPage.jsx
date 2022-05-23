@@ -68,7 +68,6 @@ const SearchMethodPage = () => {
   const [data, setData] = React.useState([]);
   const [searchResult, setSearchResult] = React.useState([]);
   const [showModal, setShowModal] = React.useState(false);
-  const [error, setError] = React.useState();
 
   React.useEffect(() => {
     let values = {};
@@ -80,13 +79,9 @@ const SearchMethodPage = () => {
   }, []);
 
   const initData = async () => {
-    try {
-      const fetchData = await getData();
-      setData(fetchData);
-      setSearchResult(fetchData);
-    } catch (error) {
-      setError(error);
-    }
+    const fetchData = await getData();
+    setData(fetchData);
+    setSearchResult(fetchData);
   };
   const hanldeClick = (e) => {
     console.log(e.target.name, e.target.checked);
@@ -115,7 +110,7 @@ const SearchMethodPage = () => {
           <Accordion>
             {data.map((item, i) => {
               return (
-                <Accordion.Item eventKey={`modal${i}`}>
+                <Accordion.Item key={`modal${i}`} eventKey={`modal${i}`}>
                   <AccordionItem header={item.name}>{item.description}</AccordionItem>
                 </Accordion.Item>
               );
@@ -129,7 +124,6 @@ const SearchMethodPage = () => {
     );
   };
   if (data.length === 0) return <p>...loading</p>;
-  if (error) return <p>Some error happened</p>;
   return (
     <div style={styles.container}>
       <h1>Search methods</h1>
