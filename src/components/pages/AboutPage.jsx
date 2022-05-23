@@ -4,14 +4,7 @@ import ListGroup from "react-bootstrap/ListGroup";
 
 const AboutPage = () => {
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div style={styles.container}>
       <h1>About this project</h1>
       <h2>This project was created for Agricathon 2022</h2>
       <br />
@@ -31,3 +24,12 @@ const AboutPage = () => {
 };
 
 export default AboutPage;
+
+const styles = {
+  container: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+};
